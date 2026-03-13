@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
@@ -21,7 +22,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.ntfy.wear.databinding.ActivityMainBinding
 import com.ntfy.wear.db.Subscription
 import com.ntfy.wear.service.SubscriberService
 import kotlinx.coroutines.flow.first
@@ -29,16 +29,15 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     
-    private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: SubscriptionAdapter
     private lateinit var storageManager: com.ntfy.wear.db.StorageManager
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
         
-        setSupportActionBar(binding.toolbar)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
         
         storageManager = (application as NtfyApplication).storageManager
         
@@ -80,12 +79,14 @@ class MainActivity : AppCompatActivity() {
             }
         )
         
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = adapter
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
     }
     
     private fun setupFab() {
-        binding.fab.setOnClickListener {
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener {
             showAddSubscriptionDialog()
         }
     }
@@ -94,7 +95,8 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             storageManager.subscriptions.collect { subscriptions ->
                 adapter.submitList(subscriptions)
-                binding.emptyView.visibility = if (subscriptions.isEmpty()) View.VISIBLE else View.GONE
+                val emptyView = findViewById<TextView>(R.id.emptyView)
+                emptyView.visibility = if (subscriptions.isEmpty()) View.VISIBLE else View.GONE
             }
         }
     }

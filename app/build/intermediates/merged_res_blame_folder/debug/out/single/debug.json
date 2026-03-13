@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "com.ntfy.wear.app-merged_res-38:/layout_dialog_settings.xml.flat",
+        "source": "com.ntfy.wear.app-main-40:/layout/dialog_settings.xml"
+    },
+    {
+        "merged": "com.ntfy.wear.app-merged_res-38:/drawable_ic_notification.xml.flat",
+        "source": "com.ntfy.wear.app-main-40:/drawable/ic_notification.xml"
+    },
+    {
+        "merged": "com.ntfy.wear.app-merged_res-38:/layout_dialog_add_subscription.xml.flat",
+        "source": "com.ntfy.wear.app-main-40:/layout/dialog_add_subscription.xml"
+    },
+    {
+        "merged": "com.ntfy.wear.app-merged_res-38:/menu_menu_main.xml.flat",
+        "source": "com.ntfy.wear.app-main-40:/menu/menu_main.xml"
+    },
+    {
+        "merged": "com.ntfy.wear.app-merged_res-38:/layout_activity_main.xml.flat",
+        "source": "com.ntfy.wear.app-main-40:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.ntfy.wear.app-merged_res-38:/drawable_circle_green.xml.flat",
+        "source": "com.ntfy.wear.app-main-40:/drawable/circle_green.xml"
+    },
+    {
+        "merged": "com.ntfy.wear.app-merged_res-38:/layout_item_subscription.xml.flat",
+        "source": "com.ntfy.wear.app-main-40:/layout/item_subscription.xml"
+    }
+]
